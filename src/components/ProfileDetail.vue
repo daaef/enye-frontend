@@ -1,21 +1,58 @@
 <template>
-  <div class="profile">
+  <div class="profileDetail">
     <p>
-      <span>Name</span>: {{ profile.FirstName }} {{ profile.FirstName }}</p>
+      <span>Name</span>: {{ prof.FirstName }} {{ prof.FirstName }}
+    </p>
     <p>
-      <span>Payment Method</span>: {{ profile.PaymentMethod }}</p>
+      <span>Payment Method</span>: {{ prof.PaymentMethod }}
+    </p>
     <p>
-      <span>Gender</span>: {{ profile.Gender }}</p>
+      <span>Gender</span>: {{ prof.Gender }}
+    </p>
     <p>
-      <span>CreditCard Type</span>: {{ profile.CreditCardType }}</p>
+      <span>Email</span>: {{ prof.Email }}
+    </p>
+    <p>
+      <span>CreditCard Type</span>: {{ prof.CreditCardType }}
+    </p>
+    <p>
+      <span>CreditCard Number</span>: {{ prof.CreditCardNumber }}
+    </p>
+    <p>
+      <span>Latitude</span>: {{ prof.Latitude }}
+    </p>
+    <p>
+      <span>Longitude</span>: {{ prof.Longitude }}
+    </p>
+    <p>
+      <span>DomainName</span>: {{ prof.DomainName }}
+    </p>
+    <p>
+      <span>PhoneNumber</span>: {{ prof.PhoneNumber }}
+    </p>
+    <p>
+      <span>MacAddress</span>: {{ prof.MacAddress }}
+    </p>
+    <p>
+      <span>URL</span>: {{ prof.URL }}
+    </p>
+    <p>
+      <span>UserName</span>: {{ prof.UserName }}
+    </p>
+    <p>
+      <span>Last Login</span>: {{ prof.LastLogin }}
+    </p>
+    <p>
+      <span>Payment Method</span>: {{ prof.PaymentMethod }}
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Profile',
+  name: 'ProfileDetail',
   props: {
-    profile: {
+    prof: {
       type: Object,
       default: function () {
         return {
@@ -37,27 +74,38 @@ export default {
         }
       }
     }
+  },
+  mounted() {
+    console.log(this.$props.prof)
+  },
+  computed: {
+    profileDetail() {
+      console.log(this.$store.getters.profile)
+      return this.$store.getters.profile
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.profile {
+.profileDetail {
   display: flex;
   flex-wrap: wrap;
-  width: 40%;
+  width: 100%;
   background: linear-gradient(275.47deg, #8C51A1 2.71%, #360F51 99.61%);
   border-radius: 25px;
   padding: 10px 20px 20px;
   margin-top: 20px;
   span {
     font-weight: 600;
+    font-size: 1.1rem;
   }
   p {
-    margin-right: 20px;
     margin-top: 10px;
     color: #fafafa;
+    width: 100%;
+    font-size: 1.2rem;
   }
 }
 </style>

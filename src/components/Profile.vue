@@ -1,61 +1,69 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <a href="#" @click="setDetail" class="profile">
     <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa" target="_blank" rel="noopener">pwa</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+      <span>Name</span>: {{ profile.FirstName }} {{ profile.LastName }}</p>
+    <p>
+      <span>Payment Method</span>: {{ profile.PaymentMethod }}</p>
+    <p>
+      <span>Gender</span>: {{ profile.Gender }}</p>
+    <p>
+      <span>CreditCard Type</span>: {{ profile.CreditCardType }}</p>
+  </a>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Profile',
   props: {
-    msg: String
+    profile: {
+      type: Object,
+      default: function () {
+        return {
+          FirstName: "Kailee",
+          LastName: "Schaefer",
+          Gender: "Male",
+          Latitude: -36.518723,
+          Longitude: -112.08739,
+          CreditCardNumber: "348225436399406",
+          CreditCardType: "American Express",
+          Email: "LIuBTpy@QgPWSAQ.org",
+          DomainName: "wdtSvtC.biz",
+          PhoneNumber: "457-391-6210",
+          MacAddress: "88:66:af:1c:ec:51",
+          URL: "https://ykCGbJW.com/",
+          UserName: "UsWemsp",
+          LastLogin: "2011-02-26 17:29:53",
+          PaymentMethod: "check",
+        }
+      }
+    }
+  },
+  methods: {
+    setDetail() {
+      this.$store.commit('setProfile',this.$props.profile)
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+<style lang="scss">
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(50% - 20px);
+  background: linear-gradient(275.47deg, #8C51A1 2.71%, #360F51 99.61%);
+  border-radius: 25px;
+  padding: 10px 20px 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  span {
+    font-weight: 600;
+  }
+  p {
+    margin-right: 20px;
+    margin-top: 10px;
+    color: #fafafa;
+  }
 }
 </style>
